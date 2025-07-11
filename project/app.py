@@ -33,10 +33,14 @@ def get_tasks():
     return render_template('tasks.html', tasks=tasks)
 
 
-@app.route('/info')
+@app.route('/info/<int:id>')
 def get_infos():
-    infos = Task.query.all()
-    return render_template('infos.html', infos=infos)
+    # infos = Task.query.all()
+    # return render_template('infos.html', infos=infos)
+    task = Task.query.get_or_404(id)
+    db.session.delete(task)
+    db.session.commit()
+    return redirect(url_for('get_tasks'))
 
 
 @app.route('/add', methods=['GET', 'POST'])
