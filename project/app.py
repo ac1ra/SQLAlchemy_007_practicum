@@ -35,8 +35,6 @@ def get_tasks():
 
 @app.route('/info/<int:id>')
 def get_infos():
-    # infos = Task.query.all()
-    # return render_template('infos.html', infos=infos)
     task = Task.query.get_or_404(id)
     db.session.delete(task)
     db.session.commit()
