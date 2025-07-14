@@ -39,10 +39,14 @@ def get_info(id):
     return render_template('info_page.html', info=info)
 
 
-@app.route('/message/<int:id>')
+@app.route('/message/<int:id>', methods=['GET', 'POST'])
 def message(id):
-    message = Task.query.get(id)
-    return render_template('message_page.html', message=message)
+    task = Task.query.get_or_404(id)
+    if request.method == 'POST':
+        task.codename = request.form['codename']
+        task.contact = request.form['contact']
+        task.email = request.form['email']
+    return render_template('message_page.html', task=task)
 
 
 @app.route('/add', methods=['GET', 'POST'])

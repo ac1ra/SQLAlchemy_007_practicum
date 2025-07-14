@@ -19,7 +19,8 @@
                     <label>Codename:</label> {{task.codename}}
                     <div>
                         <a href=" " class="btn btn-sm btn-primary">Open</a>
-                        <a href=" " class="btn btn-sm btn-secondary">Send message</a>
+                        <a href="{{url_for('message_page',id=task.id)}} " class="btn btn-sm btn-secondary">Send
+                            message</a>
                         <a href="{{ url_for('edit_task', id=task.id) }}" class="btn btn-sm btn-warning">Edit</a>
                         <a href="{{ url_for('delete_task', id=task.id) }}" class="btn btn-sm btn-danger"
                             onclick="return confirm('Are you sure?')">Delete</a>
