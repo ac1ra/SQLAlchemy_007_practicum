@@ -33,12 +33,16 @@ def get_tasks():
     return render_template('tasks.html', tasks=tasks)
 
 
-@app.route('/info/<int:id>')
-def get_infos():
-    task = Task.query.get_or_404(id)
-    db.session.delete(task)
-    db.session.commit()
-    return redirect(url_for('get_tasks'))
+@app.route('/agent/<int:id>')
+def get_info(id):
+    info = Task.query.get(id)
+    return render_template('info_page.html', info=info)
+
+
+@app.route('/message/<int:id>')
+def message(id):
+    message = Task.query.get(id)
+    return render_template('message_page.html', message=message)
 
 
 @app.route('/add', methods=['GET', 'POST'])

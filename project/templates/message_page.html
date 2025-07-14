@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Info List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="text-center">Message</h1>
+        <div class="card shadow p-3" style="width: 500px; align-content: center;">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between aligh-items-center">
+                    <label>Codename:</label> {{message.codename}}
+                </li>
+                <li class="list-group-item d-flex justify-content-between aligh-items-center">
+                    <label>Email:</label> {{message.email}}
+                </li>
+                <input type="text" id="text" name="text" class="form-control" value="" required style="height: 200px;">
+            </ul>
+            <div style="display: flex; flex-direction: row; gap:15px; justify-content: center;">
+                <div class="text-center mt-4">
+                    <a href="{{ url_for('get_tasks') }}" class="btn btn-success">Send message</a>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="{{ url_for('get_tasks') }}" class="btn btn-secondary">Back to Task List</a>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
