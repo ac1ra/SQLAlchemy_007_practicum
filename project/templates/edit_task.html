@@ -27,9 +27,12 @@
                     <label for="email" class="form-label">Update email:</label>
                     <input type="text" id="email" name="email" class="form-control" value="{{ task.email }}" required>
                     <label for="access_level" class="form-label">Access_level:</label>
-                    <input type="text" id="access_level" name="access_level" class="form-control"
-                        value="{{ task.access_level }}" required>
 
+                    <input type="radio" id="access_level" name="access_level" value="Secret" required>
+                    <label for="access_level">Secret</label>
+
+                    <input type="radio" id="access_level" name="access_level" value="Top Secret" required>
+                    <label for="access_level">Top Secret</label>
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Update Task</button>
             </form>

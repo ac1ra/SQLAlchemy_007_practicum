@@ -41,11 +41,7 @@ def get_info(id):
 
 @app.route('/message/<int:id>', methods=['GET', 'POST'])
 def message(id):
-    task = Task.query.get_or_404(id)
-    if request.method == 'POST':
-        task.codename = request.form['codename']
-        task.contact = request.form['contact']
-        task.email = request.form['email']
+    task = Task.query.get(id)
     return render_template('message_page.html', task=task)
 
 
@@ -89,6 +85,19 @@ def delete_task(id):
     db.session.delete(task)
     db.session.commit()
     return redirect(url_for('get_tasks'))
+
+
+@app.route('/db')
+def format_db():
+    Task.query.filter().delete()
+    db.session.commit()
+    return redirect(url_for('get_tasks'))
+
+
+@app.route('/sort')
+def sort_tasks():
+    tasks = Task.query.filter(Task.access_level == "Top Secret").all()
+    return render_template('tasks.html', tasks=tasks)
 
 
 if __name__ == "__main__":

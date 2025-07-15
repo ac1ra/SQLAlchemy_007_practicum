@@ -16,10 +16,11 @@
                 {% for task in tasks %}
                 <li class="list-group-item d-flex justify-content-between aligh-items-center">
 
-                    <label>Codename:</label> {{task.codename}}
+                    <label>{{task.codename}}</label>
                     <div>
-                        <a href=" " class="btn btn-sm btn-primary">Open</a>
-                        <a href="{{url_for('message_page',id=task.id)}} " class="btn btn-sm btn-secondary">Send
+
+                        <a href="{{url_for('get_info', id=task.id)}} " class="btn btn-sm btn-primary">Open</a>
+                        <a href="{{url_for('message',id=task.id)}} " class="btn btn-sm btn-secondary">Send urent
                             message</a>
                         <a href="{{ url_for('edit_task', id=task.id) }}" class="btn btn-sm btn-warning">Edit</a>
                         <a href="{{ url_for('delete_task', id=task.id) }}" class="btn btn-sm btn-danger"
@@ -29,8 +30,17 @@
                 {% endfor %}
             </ul>
         </div>
-        <div class="text-center mt-4">
-            <a href="{{url_for('add_task')}}" class="btn btn-success">Add New Task</a>
+        <div style="display: flex; flex-direction: row; gap: 10px; justify-content: center;">
+            <div class="text-center mt-4">
+                <a href="{{url_for('add_task')}}" class="btn btn-success">Add New Task</a>
+            </div>
+            <div class="text-center mt-4">
+                <a href="{{ url_for('format_db') }}" class="btn btn-danger"
+                    onclick="return confirm('DB will delete! Are you sure?')">Secret Mode</a>
+            </div>
+            <div class="text-center mt-4">
+                <a href="{{ url_for('sort_tasks') }}" class="btn btn-sm">Sort Top Secret</a>
+            </div>
         </div>
 </body>
 
